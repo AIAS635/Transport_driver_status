@@ -1,0 +1,8 @@
+# 默认忽略的文件
+/data/videos/
+/一周预警数据/
+/__pycache__/
+/src/__pycache__/
+/.idea/
+/other/
+/weights/gitignore/

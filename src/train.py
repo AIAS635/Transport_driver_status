@@ -28,7 +28,7 @@ class EpochSubDataset(torch.utils.data.Dataset):
 def train_model():
     task_chinese_name = Config.get_task_excel_name()
     datetime_str = datetime.now().strftime("%Y%m%d_%H%M%S")
-    weight_path = Config.get_weight_path()"
+    weight_path = Config.get_weight_path()
 
     print(f"\n==========================================")
     print(f"启动不平衡数据均衡化训练: 【{task_chinese_name}】")
