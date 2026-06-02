@@ -42,4 +42,4 @@ class Config:
 
     @classmethod
     def get_weight_path(cls):
-        return cls.ROOT_DATA_DIR + cls.TASK_MAP[cls.TASK_TYPE]["weight_name"]
+        return cls.ROOT_DATA_DIR + "/weights/" + cls.TASK_MAP[cls.TASK_TYPE]["weight_name"]

@@ -121,7 +121,7 @@ def train_model():
             f"Epoch {epoch + 1}/{actual_epochs} 完成 | 本轮平衡样本数: {len(epoch_samples)} | 损失: {epoch_loss:.4f} | 准确率: {epoch_acc:.2f}%")
 
         # 实时归档保存
-        weight_path = "weights_saved" + weight_path.split(".")[0] + f"_{datetime_str}_loss{epoch_loss:.4f}_acc{epoch_acc:.2f}%.pth"
+        weight_path = weight_path.split(".")[0] + f"/{datetime_str}_loss{epoch_loss:.4f}_acc{epoch_acc:.2f}%.pth"
         torch.save(model.state_dict(), weight_path)
 
     print(f"\n极其不平衡对抗训练完美结束！对应专用权重已妥善保存至: {weight_path}\n")
