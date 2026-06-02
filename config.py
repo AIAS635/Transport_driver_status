@@ -4,8 +4,8 @@ import os
 class Config:
     # 路径配置
     ROOT_DATA_DIR = "/share/data/公交检测"
-    VIDEO_DIR = "/videos"
-    LABEL_PATH = "/labels.csv"
+    VIDEO_DIR = ROOT_DATA_DIR + "/videos"
+    LABEL_PATH = ROOT_DATA_DIR + "/labels.csv"
 
     # 模式配置
     RUN_MODE = "train"
