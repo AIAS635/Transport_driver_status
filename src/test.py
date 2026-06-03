@@ -49,7 +49,7 @@ def test_model():
 
     print("正在批量读取视频并进行网络推理...")
 
-    csv_path = os.path.join(f"data/predict_{Config.TASK_TYPE}.csv")
+    csv_path = os.path.join(f"./predict_{Config.TASK_TYPE}.csv")
     csv_file = open(csv_path, "w", newline="", encoding="utf-8-sig")
     writer = csv.writer(csv_file)
     writer.writerow(["video_name", "predicted", "confidence", "is_process", "is_true"])
