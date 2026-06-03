@@ -27,7 +27,6 @@ class EpochSubDataset(torch.utils.data.Dataset):
 
 def train_model():
     task_chinese_name = Config.get_task_excel_name()
-    datetime_str = datetime.now().strftime("%Y%m%d_%H%M%S")
     weight_path = Config.get_weight_path()
 
     print(f"\n==========================================")
@@ -121,6 +120,7 @@ def train_model():
             f"Epoch {epoch + 1}/{actual_epochs} 完成 | 本轮平衡样本数: {len(epoch_samples)} | 损失: {epoch_loss:.4f} | 准确率: {epoch_acc:.2f}%")
 
         # 实时归档保存
+        datetime_str = datetime.now().strftime("%Y%m%d_%H%M%S")
         save_path = weight_path.split(".")[0] + f"/{datetime_str}_loss{epoch_loss:.4f}_acc{epoch_acc:.2f}%.pth"
         torch.save(model.state_dict(), save_path)
 

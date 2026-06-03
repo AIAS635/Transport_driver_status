@@ -27,9 +27,9 @@ class DriverDataset(Dataset):
         df['is_process'] = df['is_process'].astype(str).str.strip()
         df = df.dropna(subset=['back_video', 'is_true', 'is_process', 'result_name'])
 
-        # 过滤核心逻辑 A：根据运行模式决定是否启用 is_process 过滤
-        if self.run_mode == "train":
-            df = df[df['is_process'] == '1']
+        # # 过滤核心逻辑 A：根据运行模式决定是否启用 is_process 过滤
+        # if self.run_mode == "train":
+        #     df = df[df['is_process'] == '1']
 
         # 过滤核心逻辑 B：只筛选出当前 Config.TASK_TYPE 所对应的异常类别数据
         target_anomaly = Config.get_task_excel_name()
