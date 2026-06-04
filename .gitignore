@@ -6,3 +6,9 @@
 /.idea/
 /other/
 /weights/gitignore/
+/design.md
+/现阶段报告.docx
+/convert_md_to_docx.py
+/report/
+/config.py
+/predict_fatigue.csv

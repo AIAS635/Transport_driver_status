@@ -59,6 +59,7 @@ def train_model():
     loss_weights = torch.tensor([1.0, Config.POS_WEIGHT], dtype=torch.float32).to(Config.DEVICE)    # 正类在loss中权重更高，避免fn出现，提高recall
     criterion = nn.CrossEntropyLoss(weight=loss_weights)
     optimizer = torch.optim.AdamW(model.parameters(), lr=Config.LR)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2, verbose=True)
 
     # 指针：记录当前轮替到了负样本池的哪个位置
     neg_start_idx = 0
@@ -122,6 +123,7 @@ def train_model():
         # 实时归档保存
         datetime_str = datetime.now().strftime("%Y%m%d_%H%M%S")
         save_path = weight_path.split(".")[0] + f"/{datetime_str}_loss{epoch_loss:.4f}_acc{epoch_acc:.2f}%.pth"
+        scheduler.step(epoch_loss)
         torch.save(model.state_dict(), save_path)
 
     print(f"\n极其不平衡对抗训练完美结束！对应专用权重已妥善保存至: {save_path}\n")
