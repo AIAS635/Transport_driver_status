@@ -59,7 +59,7 @@ def train_model():
     loss_weights = torch.tensor([1.0, Config.POS_WEIGHT], dtype=torch.float32).to(Config.DEVICE)    # 正类在loss中权重更高，避免fn出现，提高recall
     criterion = nn.CrossEntropyLoss(weight=loss_weights)
     optimizer = torch.optim.AdamW(model.parameters(), lr=Config.LR)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2, verbose=True)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=2)
 
     # 指针：记录当前轮替到了负样本池的哪个位置
     neg_start_idx = 0
